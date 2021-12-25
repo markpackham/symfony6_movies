@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
+    // Newer method is #[Route('/movies', name: 'movies')]
     /**
      * @Route("/movies", name="movies")
      */
