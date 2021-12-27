@@ -10,12 +10,13 @@ class MoviesController extends AbstractController
 {
     // Newer method is #[Route('/movies', name: 'movies')]
     /**
-     * @Route("/movies", name="movies")
+     * @Route("/movies", name="movies", methods:['GET','HEAD'])
      */
-    public function index(): Response
+    #[Route('/movies', name: 'movies')]
+    public function index($name = "bob"): Response
     {
         return $this->json([
-            'message' => 'Welcome to your new controller!',
+            'message' => $name,
             'path' => 'src/Controller/MoviesController.php',
         ]);
     }
