@@ -8,12 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
-    // Newer method is #[Route('/movies', name: 'movies')]
+
+    // Another way of writing routes
+    // #[Route('/movies', name: 'movies')]
+
     /**
-     * @Route("/movies", name="movies", methods:['GET','HEAD'])
+     * @Route("/movies/{name}",name="movies", defaults={"name": "Hello movie!"}, methods={"GET","HEAD"})
      */
-    #[Route('/movies', name: 'movies')]
-    public function index($name = "bob"): Response
+    public function index($name): Response
     {
         return $this->json([
             'message' => $name,
