@@ -22,6 +22,8 @@ class MoviesController extends AbstractController
         //     'path' => 'src/Controller/MoviesController.php',
         // ]);
 
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'title' => 'Blade Runner'
+        ]);
     }
 }
