@@ -1,9 +1,13 @@
 {% extends "base.html.twig" %}
 
-{% block title %}
-Movies Page
-{% endblock %}
-
 {% block body %}
-<h1>{{title}}</h1>
+
+{% for movie in movies %}
+    <ul>
+        <li>
+            {{movie}}
+        </li>
+    </ul>
+{% endfor %}
+
 {% endblock %}
