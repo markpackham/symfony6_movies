@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 02:12 PM
+-- Generation Time: Jan 10, 2022 at 03:42 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -31,6 +31,16 @@ CREATE TABLE `actor` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `actor`
+--
+
+INSERT INTO `actor` (`id`, `name`) VALUES
+(9, 'Christian Bale'),
+(10, 'Health Ledger'),
+(11, 'Chris Evans'),
+(12, 'Robert Downey Jr');
 
 -- --------------------------------------------------------
 
@@ -65,6 +75,14 @@ CREATE TABLE `movie` (
   `image_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `movie`
+--
+
+INSERT INTO `movie` (`id`, `title`, `release_year`, `description`, `image_path`) VALUES
+(7, 'The Dark Knight', 2008, 'Dark Knight description...', 'https://cdn.pixabay.com/photo/2021/06/18/11/22/batman-6345897_960_720.jpg'),
+(8, 'Captain America', 2011, 'Captain America description...', 'https://pixabay.com/illustrations/captain-america-avengers-marvel-5692937/');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +93,16 @@ CREATE TABLE `movie_actor` (
   `movie_id` int(11) NOT NULL,
   `actor_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `movie_actor`
+--
+
+INSERT INTO `movie_actor` (`movie_id`, `actor_id`) VALUES
+(7, 9),
+(7, 10),
+(8, 11),
+(8, 12);
 
 --
 -- Indexes for dumped tables
@@ -114,13 +142,13 @@ ALTER TABLE `movie_actor`
 -- AUTO_INCREMENT for table `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
