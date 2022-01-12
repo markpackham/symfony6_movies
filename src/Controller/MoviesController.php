@@ -24,8 +24,12 @@ class MoviesController extends AbstractController
     public function index(): Response
     {
 
+        // findAll() - SELECT * FROM movies;
+        // find() - SELECT * FROM movies WHERE id = 7;
+        // findBy() - SELECY * FROM movies ORDER BY id DESC
+
         $repository = $this->em->getRepository(Movie::class);
-        $movies = $repository->findAll();
+        $movies = $repository->findBy([], ['id' => 'DESC']);
 
         dd($movies);
 
