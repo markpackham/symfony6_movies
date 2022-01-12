@@ -31,7 +31,7 @@ class MoviesController extends AbstractController
         // count(['id' => 7]) - SELECT COUNT() FROM movies WHERE id = 7
 
         $repository = $this->em->getRepository(Movie::class);
-        $movies = $repository->count(['id' => 7]);
+        $movies = $repository->getClassName();
 
         dd($movies);
 
