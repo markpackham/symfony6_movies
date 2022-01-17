@@ -24,17 +24,6 @@ class MoviesController extends AbstractController
     public function index(): Response
     {
 
-        // findAll() - SELECT * FROM movies;
-        // find() - SELECT * FROM movies WHERE id = 7;
-        // findBy() - SELECY * FROM movies ORDER BY id DESC
-        // findOneBy() - SELECT * FROM movies WHERE id = 7 AND title = "The Dark Knight" ORDER BY id
-        // count(['id' => 7]) - SELECT COUNT() FROM movies WHERE id = 7
-
-        $repository = $this->em->getRepository(Movie::class);
-        $movies = $repository->getClassName();
-
-        dd($movies);
-
         return $this->render('index.html.twig');
     }
 }
