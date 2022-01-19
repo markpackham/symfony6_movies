@@ -54,6 +54,12 @@ Encore
   .configureBabelPresetEnv((config) => {
     config.useBuiltIns = "usage";
     config.corejs = 3;
+  })
+
+  .enablePostCssLoader((options) => {
+    options.postcssOptions = {
+      config: "./postcss.config.js",
+    };
   });
 
 // enables Sass/SCSS support
