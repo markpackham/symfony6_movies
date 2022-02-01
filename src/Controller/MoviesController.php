@@ -26,7 +26,7 @@ class MoviesController extends AbstractController
     // }
 
     /**
-     * @Route("/movies",name="movies")
+     * @Route("/movies", methods={"GET"}, name="movies")
      */
     public function index(): Response
     {
@@ -36,6 +36,21 @@ class MoviesController extends AbstractController
         // return $this->render('index.html.twig');
         return $this->render('movies/index.html.twig', [
             'movies' => $movies
+        ]);
+    }
+
+
+    /**
+     * @Route("/movies/{id}", methods={"GET"}, name="show")
+     */
+    public function show($id): Response
+    {
+
+        $movie = $this->movieRepository->find($id);
+
+        // return $this->render('index.html.twig');
+        return $this->render('movies/show.html.twig', [
+            'movie' => $movie
         ]);
     }
 }
