@@ -12,11 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class MoviesController extends AbstractController
 {
 
-    private $em;
-    public function __construct(EntityManagerInterface $em)
+    private $movieRepository;
+    // private $em;
+
+    public function __construct(MovieRepository $movieRepository)
     {
-        $this->em = $em;
+        $this->movieRepository = $movieRepository;
     }
+
+    // public function __construct(EntityManagerInterface $em)
+    // {
+    //     $this->em = $em;
+    // }
 
     /**
      * @Route("/movies",name="movies")
@@ -24,6 +31,7 @@ class MoviesController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('index.html.twig');
+        // return $this->render('index.html.twig');
+        return $this->render('movies/index.html.twig');
     }
 }
