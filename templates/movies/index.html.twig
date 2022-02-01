@@ -1,7 +1,12 @@
+{{movies|length}}
+
 {% for movie in movies %}
     {{movie.imagePath}}
 
     {{movie.title}}
 
     {{movie.description}}
+
+    {{movie.id}}
 {% endfor %}
+
