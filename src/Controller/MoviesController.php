@@ -6,10 +6,13 @@ use App\Entity\Movie;
 use App\Form\MovieFormType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 class MoviesController extends AbstractController
 {
@@ -53,6 +56,23 @@ class MoviesController extends AbstractController
         $form->handleRequest($request);
         if ($form->isValid() && $form->isSubmitted()) {
             $newMovie = $form->getData();
+
+            $imagePath = $form->get('imagePath')->getData();
+
+            if ($imagePath) {
+                $newFileName = uniqid() . '.' . $imagePath->guessExtension();
+
+                try {
+                    $imagePath->move(
+                        $this->getParameter('kernal.project_dit') . '/public/uploads',
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $newMovie->setImagePath('/uploads/' . $newFileName);
+            }
         }
 
         return $this->render('movies/create.html.twig', [
