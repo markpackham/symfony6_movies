@@ -77,6 +77,8 @@ class MoviesController extends AbstractController
             }
             $this->em->persist($newMovie);
             $this->em->flush();
+
+            return $this->redirectToRoute('movies');
         }
 
         return $this->render('movies/create.html.twig', [
