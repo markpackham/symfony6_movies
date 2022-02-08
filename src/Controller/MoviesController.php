@@ -66,7 +66,7 @@ class MoviesController extends AbstractController
 
                 try {
                     $imagePath->move(
-                        $this->getParameter('kernal.project_dit') . '/public/uploads',
+                        $this->getParameter('kernal.project_dir') . '/public/uploads',
                         $newFileName
                     );
                 } catch (FileException $e) {
