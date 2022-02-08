@@ -66,7 +66,7 @@ class MoviesController extends AbstractController
 
                 try {
                     $imagePath->move(
-                        $this->getParameter('kernal.project_dir') . '/public/uploads',
+                        'E:\Sites\xampp\htdocs\symfony6_movies\public\uploads',
                         $newFileName
                     );
                 } catch (FileException $e) {
