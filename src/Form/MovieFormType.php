@@ -16,7 +16,7 @@ class MovieFormType extends AbstractType
             ->add('releaseYear')
             ->add('description')
             ->add('imagePath')
-            ->add('actors')
+            // ->add('actors')
         ;
     }
 
