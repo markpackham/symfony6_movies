@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MovieFormType extends AbstractType
 {
@@ -36,7 +37,12 @@ class MovieFormType extends AbstractType
                 ),
                 'label' => false
             ])
-            ->add('imagePath')
+            ->add('imagePath', FileType::class, [
+                'attr' => array(
+                    'class' => 'py-10'
+                ),
+                'label' => false
+            ])
             // ->add('actors')
         ;
     }
