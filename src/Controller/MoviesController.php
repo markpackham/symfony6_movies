@@ -66,7 +66,7 @@ class MoviesController extends AbstractController
 
                 try {
                     $imagePath->move(
-                        'E:\Sites\xampp\htdocs\symfony6_movies\public\uploads',
+                        './uploads',
                         $newFileName
                     );
                 } catch (FileException $e) {
