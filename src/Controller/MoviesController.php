@@ -56,7 +56,7 @@ class MoviesController extends AbstractController
         $form = $this->createForm(MovieFormType::class, $movie);
 
         $form->handleRequest($request);
-        if ($form->isValid() && $form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $newMovie = $form->getData();
 
             $imagePath = $form->get('imagePath')->getData();
