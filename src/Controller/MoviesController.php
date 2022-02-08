@@ -17,12 +17,14 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class MoviesController extends AbstractController
 {
 
+    private $em;
     private $movieRepository;
     // private $em;
 
-    public function __construct(MovieRepository $movieRepository)
+    public function __construct(MovieRepository $movieRepository, EntityManagerInterface $em)
     {
         $this->movieRepository = $movieRepository;
+        $this->em = $em;
     }
 
     // public function __construct(EntityManagerInterface $em)
@@ -73,6 +75,8 @@ class MoviesController extends AbstractController
 
                 $newMovie->setImagePath('/uploads/' . $newFileName);
             }
+            $this->em->persist($newMovie);
+            $this->em->flush();
         }
 
         return $this->render('movies/create.html.twig', [
