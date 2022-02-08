@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class MovieFormType extends AbstractType
 {
@@ -15,13 +17,25 @@ class MovieFormType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'attr' => array(
-                    'class' => 'bg-transparent block border-b-2 w-full text-6xl outline-none',
+                    'class' => 'bg-transparent block border-b-2 w-full h-20 text-6xl outline-none',
                     'placeholder' => 'Enter title'
                 ),
                 'label' => false
             ])
-            ->add('releaseYear')
-            ->add('description')
+            ->add('releaseYear', IntegerType::class, [
+                'attr' => array(
+                    'class' => 'bg-transparent block mt-10 border-b-2 w-full h-20 text-6xl outline-none',
+                    'placeholder' => 'Enter Release Year'
+                ),
+                'label' => false
+            ])
+            ->add('description', TextareaType::class, [
+                'attr' => array(
+                    'class' => 'bg-transparent block mt-10 border-b-2 w-full h-60 text-6xl outline-none',
+                    'placeholder' => 'Describe the movie'
+                ),
+                'label' => false
+            ])
             ->add('imagePath')
             // ->add('actors')
         ;
