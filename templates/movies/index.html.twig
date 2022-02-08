@@ -2,20 +2,22 @@
 
 {% block body %}
 
-{{movies|length}}
+<p>{{movies|length}}</p>
 
 <div class="mx-auto w-4/5 my-8">
 <a href="/movies/create" class="uppercase border border-gray-500 text-lg py-4 p-6 rounded bg-gray-800">Create New Movie</a>
 </div>
 
 {% for movie in movies %}
+<p class="py-2">
     {{movie.imagePath}}
-
+<br>
     {{movie.title}}
-
+<br>
     {{movie.description}}
-
+<br>
     {{movie.id}}
+</p>
 {% endfor %}
 
 {% endblock %}
