@@ -2,22 +2,55 @@
 
 {% block body %}
 
-<p>{{movies|length}}</p>
+   <div class="w-4/5 m-auto text-center">
+        <div class="py-12 border-b border-gray-200">
+            <h1 class="text-6xl pt-12 pb-8">
+                Movies Review
+            </h1>
+
+            <span class="font-light text-gray-500 italic">
+                Created by Code With Dary
+            </span>
+        </div>
+    </div>
 
 <div class="mx-auto w-4/5 my-8">
-<a href="/movies/create" class="uppercase border border-gray-500 text-lg py-4 p-6 rounded bg-gray-800">Create New Movie</a>
+<a href="/movies/create" class="uppercase border border-gray-500 text-lg py-4 p-6 rounded bg-gray-300">Create New Movie</a>
 </div>
 
+    <div class="md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15 ">
+    <p>Amount of Movies: {{movies|length}}</p>
+
 {% for movie in movies %}
-<p class="py-2">
-    {{movie.imagePath}}
-<br>
-    {{movie.title}}
-<br>
-    {{movie.description}}
-<br>
-    {{movie.id}}
-</p>
-{% endfor %}
+        <!-- Blog Item -->
+        <div class="text-center pt-8 pb-4">
+            <img
+                    src="{{movie.imagePath}}"
+                    alt="Movie Image"
+                    class="shadow-xl rounded-md">
+
+            <h2 class="text-gray-700 font-bold text-3xl py-2">
+                    {{movie.title}}
+            </h2>
+
+            <p>
+            Movie Id: {{movie.id}}
+            </p>
+
+            <span class="text-gray-500">
+                By <span class="italic text-sm text-gray-800">Someone | 28.01.2022
+            </span>
+
+            <p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
+                    {{movie.description}}
+            </p>
+
+            <a href="/blog/" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+                Keep Reading
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
 
 {% endblock %}
