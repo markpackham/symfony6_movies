@@ -117,7 +117,7 @@ class MoviesController extends AbstractController
                             return new Response($e->getMessage());
                         }
 
-                        $movie->setImagePath('./uploads/' . $newFileName);
+                        $movie->setImagePath('/uploads/' . $newFileName);
                         $this->em->flush();
                         return $this->redirectToRoute('movies');
                     }
