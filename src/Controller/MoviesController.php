@@ -102,25 +102,21 @@ class MoviesController extends AbstractController
             if ($imagePath) {
                 // Handle image upload
                 if ($movie->getImagePath() !== null) {
-                    if (file_exists(
-                        $this->getParameter('kernel.project_dir') . $movie->getImagePath()
-                    )) {
-                        $this->getParameter('kernel.project_dir') . $movie->getImagePath();
-                        $newFileName = uniqid() . '.' . $imagePath->guessExtension();
+                    $this->getParameter('kernel.project_dir') . $movie->getImagePath();
+                    $newFileName = uniqid() . '.' . $imagePath->guessExtension();
 
-                        try {
-                            $imagePath->move(
-                                './uploads',
-                                $newFileName
-                            );
-                        } catch (FileException $e) {
-                            return new Response($e->getMessage());
-                        }
-
-                        $movie->setImagePath('/uploads/' . $newFileName);
-                        $this->em->flush();
-                        return $this->redirectToRoute('movies');
+                    try {
+                        $imagePath->move(
+                            './uploads',
+                            $newFileName
+                        );
+                    } catch (FileException $e) {
+                        return new Response($e->getMessage());
                     }
+
+                    $movie->setImagePath('/uploads/' . $newFileName);
+                    $this->em->flush();
+                    return $this->redirectToRoute('movies');
                 }
             } else {
                 $movie->setTitle($form->get('title')->getData());
