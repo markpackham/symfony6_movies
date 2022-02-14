@@ -64,7 +64,7 @@ class Movie
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -76,7 +76,7 @@ class Movie
         return $this->releaseYear;
     }
 
-    public function setReleaseYear(int $releaseYear): self
+    public function setReleaseYear(?int $releaseYear): self
     {
         $this->releaseYear = $releaseYear;
 
