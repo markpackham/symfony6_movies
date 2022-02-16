@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 03:42 PM
+-- Generation Time: Feb 16, 2022 at 06:20 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -59,7 +59,8 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220105125519', '2022-01-05 14:11:09', 87);
+('DoctrineMigrations\\Version20220105125519', '2022-01-05 14:11:09', 87),
+('DoctrineMigrations\\Version20220216170501', '2022-02-16 18:06:04', 23);
 
 -- --------------------------------------------------------
 
@@ -80,8 +81,10 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`id`, `title`, `release_year`, `description`, `image_path`) VALUES
-(7, 'The Dark Knight', 2008, 'Dark Knight description...', 'https://cdn.pixabay.com/photo/2021/06/18/11/22/batman-6345897_960_720.jpg'),
-(8, 'Captain America', 2011, 'Captain America description...', 'https://pixabay.com/illustrations/captain-america-avengers-marvel-5692937/');
+(7, 'The Dark Knight', 2008, 'Dark Knight stuff', 'https://cdn.pixabay.com/photo/2021/06/18/11/22/batman-6345897_960_720.jpg'),
+(8, 'Captain America', 2011, 'Captain America description...', 'https://pixabay.com/illustrations/captain-america-avengers-marvel-5692937/'),
+(12, 'Hulk', 2005, 'Hulk Smash', '/uploads/6203ebb4d42f1.jpg'),
+(13, 'Hulk 2', 2020, 'Another Hulk Movie', '/uploads/6203ebe540ea9.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,8 +104,27 @@ CREATE TABLE `movie_actor` (
 INSERT INTO `movie_actor` (`movie_id`, `actor_id`) VALUES
 (7, 9),
 (7, 10),
-(8, 11),
-(8, 12);
+(8, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
+(1, 'admin@gmail.com', '[]', '$2y$13$J7BzkQdwwLyJ7tjOy0LE6uzL/YxJoCJy.NGxsRrcinDbuXplP12nS');
 
 --
 -- Indexes for dumped tables
@@ -135,6 +157,13 @@ ALTER TABLE `movie_actor`
   ADD KEY `IDX_3A374C6510DAF24A` (`actor_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -148,7 +177,13 @@ ALTER TABLE `actor`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
